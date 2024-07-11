@@ -5,16 +5,14 @@ import java.util.Date;
 
 @Entity
 @Table(name = "maintenance_schedule")
-public class MaintenanceSchedule {
+public class MaintenanceSchedule extends IdEntity {
 
-    private Long scheduleId;
     private Room room;
     private Date maintenanceDate;
     private String maintenanceType;
     private String status;
 
-    public MaintenanceSchedule(Long scheduleId, Room room, Date maintenanceDate, String maintenanceType, String status) {
-        this.scheduleId = scheduleId;
+    public MaintenanceSchedule(Room room, Date maintenanceDate, String maintenanceType, String status) {
         this.room = room;
         this.maintenanceDate = maintenanceDate;
         this.maintenanceType = maintenanceType;
@@ -22,17 +20,6 @@ public class MaintenanceSchedule {
     }
 
     protected MaintenanceSchedule() {}
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "schedule_id")
-    public Long getScheduleId() {
-        return scheduleId;
-    }
-
-    public void setScheduleId(Long scheduleId) {
-        this.scheduleId = scheduleId;
-    }
 
     @OneToOne
     @JoinColumn(name = "room_id", unique = true)

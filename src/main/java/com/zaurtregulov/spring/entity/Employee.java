@@ -5,15 +5,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "employee")
-public class Employee {
+public class Employee extends IdEntity {
 
-    private Long employeeId;
     private String name;
     private String role;
     private String schedule;
 
-    public Employee(Long employeeId, String name, String role, String schedule, List<Task> tasks) {
-        this.employeeId = employeeId;
+    public Employee(String name, String role, String schedule, List<Task> tasks) {
         this.name = name;
         this.role = role;
         this.schedule = schedule;
@@ -23,17 +21,6 @@ public class Employee {
     protected Employee() {}
 
     private List<Task> tasks;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employee_id")
-    public Long getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
-    }
 
     @Column(name = "name", nullable = false)
     public String getName() {

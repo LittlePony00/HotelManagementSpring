@@ -6,17 +6,15 @@ import java.util.Set;
 
 @Entity
 @Table(name = "task")
-public class Task {
+public class Task extends IdEntity {
 
-    private Long taskId;
     private String description;
     private Employee assignedTo;
     private Date dueDate;
     private String status;
     private Set<Room> rooms;
 
-    public Task(Long taskId, String description, Employee assignedTo, Date dueDate, String status, Set<Room> rooms) {
-        this.taskId = taskId;
+    public Task(String description, Employee assignedTo, Date dueDate, String status, Set<Room> rooms) {
         this.description = description;
         this.assignedTo = assignedTo;
         this.dueDate = dueDate;
@@ -25,17 +23,6 @@ public class Task {
     }
 
     protected Task() {}
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "task_id")
-    public Long getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(Long taskId) {
-        this.taskId = taskId;
-    }
 
     @Column(name = "description", nullable = false)
     public String getDescription() {

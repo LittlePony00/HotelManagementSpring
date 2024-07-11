@@ -6,9 +6,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "room")
-public class Room {
+public class Room extends IdEntity {
 
-    private Long roomId;
     private String roomType;
     private int capacity;
     private double pricePerNight;
@@ -16,8 +15,7 @@ public class Room {
     private Set<Task> tasks = new HashSet<>();
     private MaintenanceSchedule maintenanceSchedule;
 
-    public Room(Long roomId, String roomType, int capacity, double pricePerNight, boolean availability, Set<Task> tasks, MaintenanceSchedule maintenanceSchedule) {
-        this.roomId = roomId;
+    public Room(String roomType, int capacity, double pricePerNight, boolean availability, Set<Task> tasks, MaintenanceSchedule maintenanceSchedule) {
         this.roomType = roomType;
         this.capacity = capacity;
         this.pricePerNight = pricePerNight;
@@ -27,17 +25,6 @@ public class Room {
     }
 
     protected Room() {}
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "room_id")
-    public Long getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
-    }
 
     @Column(name = "room_type", nullable = false)
     public String getRoomType() {

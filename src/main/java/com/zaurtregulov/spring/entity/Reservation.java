@@ -5,17 +5,15 @@ import java.util.Date;
 
 @Entity
 @Table(name = "reservation")
-public class Reservation {
+public class Reservation extends IdEntity {
 
-    private Long reservationId;
     private Guest guest;
     private Room room;
     private Date checkInDate;
     private Date checkOutDate;
     private String status;
 
-    public Reservation(Long reservationId, Guest guest, Room room, Date checkInDate, Date checkOutDate, String status) {
-        this.reservationId = reservationId;
+    public Reservation(Guest guest, Room room, Date checkInDate, Date checkOutDate, String status) {
         this.guest = guest;
         this.room = room;
         this.checkInDate = checkInDate;
@@ -24,17 +22,6 @@ public class Reservation {
     }
 
     protected Reservation() {}
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "reservation_id")
-    public Long getReservationId() {
-        return reservationId;
-    }
-
-    public void setReservationId(Long reservationId) {
-        this.reservationId = reservationId;
-    }
 
     @ManyToOne
     @JoinColumn(name = "guest_id", nullable = false)

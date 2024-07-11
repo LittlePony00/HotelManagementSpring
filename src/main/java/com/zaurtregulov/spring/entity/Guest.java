@@ -5,32 +5,19 @@ import java.util.List;
 
 @Entity
 @Table(name = "guest")
-public class Guest {
+public class Guest extends IdEntity {
 
-    private Long guestId;
     private String name;
     private String contactInfo;
     private List<Reservation> reservations;
 
     public Guest(Long guestId, String name, String contactInfo, List<Reservation> reservations) {
-        this.guestId = guestId;
         this.name = name;
         this.contactInfo = contactInfo;
         this.reservations = reservations;
     }
 
     protected Guest() {}
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "guest_id")
-    public Long getGuestId() {
-        return guestId;
-    }
-
-    public void setGuestId(Long guestId) {
-        this.guestId = guestId;
-    }
 
     @Column(name = "name", nullable = false)
     public String getName() {
