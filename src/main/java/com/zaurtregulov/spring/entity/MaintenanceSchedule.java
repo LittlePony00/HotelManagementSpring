@@ -13,6 +13,16 @@ public class MaintenanceSchedule {
     private String maintenanceType;
     private String status;
 
+    public MaintenanceSchedule(Long scheduleId, Room room, Date maintenanceDate, String maintenanceType, String status) {
+        this.scheduleId = scheduleId;
+        this.room = room;
+        this.maintenanceDate = maintenanceDate;
+        this.maintenanceType = maintenanceType;
+        this.status = status;
+    }
+
+    protected MaintenanceSchedule() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "schedule_id")

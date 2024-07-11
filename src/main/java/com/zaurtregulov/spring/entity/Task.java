@@ -15,6 +15,17 @@ public class Task {
     private String status;
     private Set<Room> rooms;
 
+    public Task(Long taskId, String description, Employee assignedTo, Date dueDate, String status, Set<Room> rooms) {
+        this.taskId = taskId;
+        this.description = description;
+        this.assignedTo = assignedTo;
+        this.dueDate = dueDate;
+        this.status = status;
+        this.rooms = rooms;
+    }
+
+    protected Task() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "task_id")

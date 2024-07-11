@@ -12,6 +12,15 @@ public class Guest {
     private String contactInfo;
     private List<Reservation> reservations;
 
+    public Guest(Long guestId, String name, String contactInfo, List<Reservation> reservations) {
+        this.guestId = guestId;
+        this.name = name;
+        this.contactInfo = contactInfo;
+        this.reservations = reservations;
+    }
+
+    protected Guest() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "guest_id")

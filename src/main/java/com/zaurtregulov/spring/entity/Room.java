@@ -16,6 +16,18 @@ public class Room {
     private Set<Task> tasks = new HashSet<>();
     private MaintenanceSchedule maintenanceSchedule;
 
+    public Room(Long roomId, String roomType, int capacity, double pricePerNight, boolean availability, Set<Task> tasks, MaintenanceSchedule maintenanceSchedule) {
+        this.roomId = roomId;
+        this.roomType = roomType;
+        this.capacity = capacity;
+        this.pricePerNight = pricePerNight;
+        this.availability = availability;
+        this.tasks = tasks;
+        this.maintenanceSchedule = maintenanceSchedule;
+    }
+
+    protected Room() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "room_id")

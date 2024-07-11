@@ -11,6 +11,17 @@ public class Employee {
     private String name;
     private String role;
     private String schedule;
+
+    public Employee(Long employeeId, String name, String role, String schedule, List<Task> tasks) {
+        this.employeeId = employeeId;
+        this.name = name;
+        this.role = role;
+        this.schedule = schedule;
+        this.tasks = tasks;
+    }
+
+    protected Employee() {}
+
     private List<Task> tasks;
 
     @Id

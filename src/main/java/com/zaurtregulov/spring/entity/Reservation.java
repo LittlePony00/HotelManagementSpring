@@ -14,6 +14,17 @@ public class Reservation {
     private Date checkOutDate;
     private String status;
 
+    public Reservation(Long reservationId, Guest guest, Room room, Date checkInDate, Date checkOutDate, String status) {
+        this.reservationId = reservationId;
+        this.guest = guest;
+        this.room = room;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+        this.status = status;
+    }
+
+    protected Reservation() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "reservation_id")
