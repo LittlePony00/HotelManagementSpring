@@ -37,7 +37,7 @@ public class Guest extends IdEntity {
         this.contactInfo = contactInfo;
     }
 
-    @OneToMany(mappedBy = "guest")
+    @OneToMany(mappedBy = "guest", targetEntity = Reservation.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<Reservation> getReservations() {
         return reservations;
     }

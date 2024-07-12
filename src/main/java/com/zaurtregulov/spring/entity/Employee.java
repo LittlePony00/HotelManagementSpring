@@ -49,7 +49,7 @@ public class Employee extends IdEntity {
         this.schedule = schedule;
     }
 
-    @OneToMany(mappedBy = "assignedTo")
+    @OneToMany(mappedBy = "employee", targetEntity = Task.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<Task> getTasks() {
         return tasks;
     }
