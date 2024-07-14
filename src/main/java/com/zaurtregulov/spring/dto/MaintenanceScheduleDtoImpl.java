@@ -1,4 +1,4 @@
-package com.zaurtregulov.spring.data.dto;
+package com.zaurtregulov.spring.dto;
 
 import com.zaurtregulov.spring.data.entity.enums.MaintenanceScheduleStatus;
 import com.zaurtregulov.spring.data.entity.enums.MaintenanceScheduleType;

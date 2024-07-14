@@ -1,4 +1,4 @@
-package com.zaurtregulov.spring.domain.service;
+package com.zaurtregulov.spring.service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

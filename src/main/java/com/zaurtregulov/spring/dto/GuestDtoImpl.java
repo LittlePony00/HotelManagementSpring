@@ -1,4 +1,4 @@
-package com.zaurtregulov.spring.data.dto;
+package com.zaurtregulov.spring.dto;
 
 import com.zaurtregulov.spring.domain.dto.GuestDto;
 

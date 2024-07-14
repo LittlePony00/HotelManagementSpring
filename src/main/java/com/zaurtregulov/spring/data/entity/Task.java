@@ -34,16 +34,6 @@ public class Task extends IdEntity {
         this.description = description;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "assigned_to_id", nullable = false)
-    public Employee getAssignedTo() {
-        return employee;
-    }
-
-    public void setAssignedTo(Employee assignedTo) {
-        this.employee = assignedTo;
-    }
-
     @Column(name = "due_date", nullable = false)
     public Date getDueDate() {
         return dueDate;
