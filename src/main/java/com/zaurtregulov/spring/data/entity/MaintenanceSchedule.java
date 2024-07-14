@@ -1,5 +1,7 @@
-package com.zaurtregulov.spring.entity;
+package com.zaurtregulov.spring.data.entity;
 
+import com.zaurtregulov.spring.data.entity.enums.MaintenanceScheduleStatus;
+import com.zaurtregulov.spring.data.entity.enums.MaintenanceScheduleType;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -9,10 +11,10 @@ public class MaintenanceSchedule extends IdEntity {
 
     private Room room;
     private Date maintenanceDate;
-    private String maintenanceType;
-    private String status;
+    private MaintenanceScheduleType maintenanceType;
+    private MaintenanceScheduleStatus status;
 
-    public MaintenanceSchedule(Room room, Date maintenanceDate, String maintenanceType, String status) {
+    public MaintenanceSchedule(Room room, Date maintenanceDate, MaintenanceScheduleType maintenanceType, MaintenanceScheduleStatus status) {
         this.room = room;
         this.maintenanceDate = maintenanceDate;
         this.maintenanceType = maintenanceType;
@@ -41,20 +43,20 @@ public class MaintenanceSchedule extends IdEntity {
     }
 
     @Column(name = "maintenance_type", nullable = false)
-    public String getMaintenanceType() {
+    public MaintenanceScheduleType getMaintenanceType() {
         return maintenanceType;
     }
 
-    public void setMaintenanceType(String maintenanceType) {
+    public void setMaintenanceType(MaintenanceScheduleType maintenanceType) {
         this.maintenanceType = maintenanceType;
     }
 
     @Column(name = "status", nullable = false)
-    public String getStatus() {
+    public MaintenanceScheduleStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(MaintenanceScheduleStatus status) {
         this.status = status;
     }
 }

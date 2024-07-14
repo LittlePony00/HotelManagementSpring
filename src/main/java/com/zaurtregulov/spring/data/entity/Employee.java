@@ -1,4 +1,4 @@
-package com.zaurtregulov.spring.entity;
+package com.zaurtregulov.spring.data.entity;
 
 import jakarta.persistence.*;
 import java.util.List;
@@ -50,9 +50,7 @@ public class Employee extends IdEntity {
     }
 
     @OneToMany(mappedBy = "employee", targetEntity = Task.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    public List<Task> getTasks() {
-        return tasks;
-    }
+    public List<Task> getTasks() { return tasks; }
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;

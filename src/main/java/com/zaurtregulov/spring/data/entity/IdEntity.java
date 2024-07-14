@@ -1,4 +1,4 @@
-package com.zaurtregulov.spring.entity;
+package com.zaurtregulov.spring.data.entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

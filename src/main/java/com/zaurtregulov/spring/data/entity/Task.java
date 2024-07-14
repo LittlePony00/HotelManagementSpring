@@ -1,5 +1,6 @@
-package com.zaurtregulov.spring.entity;
+package com.zaurtregulov.spring.data.entity;
 
+import com.zaurtregulov.spring.data.entity.enums.TaskStatus;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -9,14 +10,14 @@ import java.util.Set;
 public class Task extends IdEntity {
 
     private String description;
-    private Employee assignedTo;
+    private Employee employee;
     private Date dueDate;
-    private String status;
+    private TaskStatus status;
     private Set<Room> rooms;
 
-    public Task(String description, Employee assignedTo, Date dueDate, String status, Set<Room> rooms) {
+    public Task(String description, Employee employee, Date dueDate, TaskStatus status, Set<Room> rooms) {
         this.description = description;
-        this.assignedTo = assignedTo;
+        this.employee = employee;
         this.dueDate = dueDate;
         this.status = status;
         this.rooms = rooms;
@@ -36,11 +37,11 @@ public class Task extends IdEntity {
     @ManyToOne
     @JoinColumn(name = "assigned_to_id", nullable = false)
     public Employee getAssignedTo() {
-        return assignedTo;
+        return employee;
     }
 
     public void setAssignedTo(Employee assignedTo) {
-        this.assignedTo = assignedTo;
+        this.employee = assignedTo;
     }
 
     @Column(name = "due_date", nullable = false)
@@ -53,13 +54,19 @@ public class Task extends IdEntity {
     }
 
     @Column(name = "status", nullable = false)
-    public String getStatus() {
+    public TaskStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TaskStatus status) {
         this.status = status;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "employee", nullable = false)
+    public Employee getEmployee() { return employee; }
+
+    public void setEmployee(Employee employee) { this.employee = employee; }
 
     @ManyToMany
     @JoinTable(

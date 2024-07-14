@@ -1,5 +1,6 @@
-package com.zaurtregulov.spring.entity;
+package com.zaurtregulov.spring.data.entity;
 
+import com.zaurtregulov.spring.data.entity.enums.ReservationStatus;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -11,9 +12,9 @@ public class Reservation extends IdEntity {
     private Room room;
     private Date checkInDate;
     private Date checkOutDate;
-    private String status;
+    private ReservationStatus status;
 
-    public Reservation(Guest guest, Room room, Date checkInDate, Date checkOutDate, String status) {
+    public Reservation(Guest guest, Room room, Date checkInDate, Date checkOutDate, ReservationStatus status) {
         this.guest = guest;
         this.room = room;
         this.checkInDate = checkInDate;
@@ -62,11 +63,11 @@ public class Reservation extends IdEntity {
     }
 
     @Column(name = "status", nullable = false)
-    public String getStatus() {
+    public ReservationStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(ReservationStatus status) {
         this.status = status;
     }
 }

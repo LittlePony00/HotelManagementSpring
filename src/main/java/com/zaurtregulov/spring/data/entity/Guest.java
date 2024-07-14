@@ -1,4 +1,4 @@
-package com.zaurtregulov.spring.entity;
+package com.zaurtregulov.spring.data.entity;
 
 import jakarta.persistence.*;
 import java.util.List;

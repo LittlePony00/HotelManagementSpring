@@ -1,5 +1,6 @@
-package com.zaurtregulov.spring.entity;
+package com.zaurtregulov.spring.data.entity;
 
+import com.zaurtregulov.spring.data.entity.enums.RoomType;
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,14 +9,14 @@ import java.util.Set;
 @Table(name = "room")
 public class Room extends IdEntity {
 
-    private String roomType;
+    private RoomType roomType;
     private int capacity;
     private double pricePerNight;
     private boolean availability;
     private Set<Task> tasks = new HashSet<>();
     private MaintenanceSchedule maintenanceSchedule;
 
-    public Room(String roomType, int capacity, double pricePerNight, boolean availability, Set<Task> tasks, MaintenanceSchedule maintenanceSchedule) {
+    public Room(RoomType roomType, int capacity, double pricePerNight, boolean availability, Set<Task> tasks, MaintenanceSchedule maintenanceSchedule) {
         this.roomType = roomType;
         this.capacity = capacity;
         this.pricePerNight = pricePerNight;
@@ -27,11 +28,11 @@ public class Room extends IdEntity {
     protected Room() {}
 
     @Column(name = "room_type", nullable = false)
-    public String getRoomType() {
+    public RoomType getRoomType() {
         return roomType;
     }
 
-    public void setRoomType(String roomType) {
+    public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
 
