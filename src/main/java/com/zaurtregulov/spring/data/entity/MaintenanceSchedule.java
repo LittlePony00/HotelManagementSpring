@@ -1,9 +1,10 @@
 package com.zaurtregulov.spring.data.entity;
 
 import com.zaurtregulov.spring.data.entity.enums.MaintenanceScheduleStatus;
-import com.zaurtregulov.spring.data.entity.enums.MaintenanceScheduleType;
+import com.zaurtregulov.spring.data.entity.enums.MaintenanceType;
 import jakarta.persistence.*;
-import java.util.Date;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "maintenance_schedule")
@@ -11,12 +12,21 @@ public class MaintenanceSchedule {
 
     private Integer roomNumber;
     private Room room;
-    private Date maintenanceDate;
-    private MaintenanceScheduleType maintenanceType;
+    private LocalDateTime maintenanceDate;
+    private MaintenanceType maintenanceType;
     private MaintenanceScheduleStatus status;
+    private Employee employee;
 
-    public MaintenanceSchedule(Integer roomNumber, Room room, Date maintenanceDate, MaintenanceScheduleType maintenanceType, MaintenanceScheduleStatus status) {
+    public MaintenanceSchedule(
+            Employee employee,
+            Integer roomNumber,
+            Room room,
+            LocalDateTime maintenanceDate,
+            MaintenanceType maintenanceType,
+            MaintenanceScheduleStatus status
+    ) {
         this.roomNumber = roomNumber;
+        this.employee = employee;
         this.room = room;
         this.maintenanceDate = maintenanceDate;
         this.maintenanceType = maintenanceType;
@@ -30,6 +40,12 @@ public class MaintenanceSchedule {
     public Integer getRoomNumber() {
         return roomNumber;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "employee", nullable = false)
+    public Employee getEmployee() { return employee; }
+
+    public void setEmployee(Employee employee) { this.employee = employee; }
 
     public void setRoomNumber(Integer roomNumber) {
         this.roomNumber = roomNumber;
@@ -47,20 +63,20 @@ public class MaintenanceSchedule {
     }
 
     @Column(name = "maintenance_date", nullable = false)
-    public Date getMaintenanceDate() {
+    public LocalDateTime getMaintenanceDate() {
         return maintenanceDate;
     }
 
-    public void setMaintenanceDate(Date maintenanceDate) {
+    public void setMaintenanceDate(LocalDateTime maintenanceDate) {
         this.maintenanceDate = maintenanceDate;
     }
 
     @Column(name = "maintenance_type", nullable = false)
-    public MaintenanceScheduleType getMaintenanceType() {
+    public MaintenanceType getMaintenanceType() {
         return maintenanceType;
     }
 
-    public void setMaintenanceType(MaintenanceScheduleType maintenanceType) {
+    public void setMaintenanceType(MaintenanceType maintenanceType) {
         this.maintenanceType = maintenanceType;
     }
 

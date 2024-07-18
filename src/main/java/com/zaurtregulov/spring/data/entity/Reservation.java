@@ -1,8 +1,11 @@
 package com.zaurtregulov.spring.data.entity;
 
+import com.zaurtregulov.spring.data.entity.enums.HotelBenefit;
+import com.zaurtregulov.spring.data.entity.enums.HotelQuota;
 import com.zaurtregulov.spring.data.entity.enums.ReservationStatus;
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "reservation")
@@ -13,18 +16,33 @@ public class Reservation extends IdEntity {
     private Date checkInDate;
     private Date checkOutDate;
     private ReservationStatus status;
+    private HotelQuota hotelQuota;
+    private HotelBenefit hotelBenefit;
+    private String description;
 
-    public Reservation(Guest guest, Room room, Date checkInDate, Date checkOutDate, ReservationStatus status) {
-        this.guest = guest;
+    public Reservation(
+            Room room,
+            Guest guest,
+            Date checkInDate,
+            Date checkOutDate,
+            String description,
+            ReservationStatus status,
+            HotelQuota hotelQuota,
+            HotelBenefit hotelBenefit
+    ) {
         this.room = room;
+        this.guest = guest;
+        this.status = status;
+        this.hotelQuota = hotelQuota;
+        this.description = description;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
-        this.status = status;
+        this.hotelBenefit = hotelBenefit;
     }
 
     protected Reservation() {}
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "guest_id", nullable = false)
     public Guest getGuest() {
         return guest;
@@ -58,6 +76,24 @@ public class Reservation extends IdEntity {
         return checkOutDate;
     }
 
+    @Column(name = "description", nullable = true)
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Column(name = "hotel_benefit", nullable = false)
+    public HotelBenefit getHotelBenefit() {
+        return hotelBenefit;
+    }
+
+    public void setHotelBenefit(HotelBenefit hotelBenefit) {
+        this.hotelBenefit = hotelBenefit;
+    }
+
     public void setCheckOutDate(Date checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
@@ -70,4 +106,9 @@ public class Reservation extends IdEntity {
     public void setStatus(ReservationStatus status) {
         this.status = status;
     }
+
+    @Column(name = "hotel_quota", nullable = false)
+    public HotelQuota getHotelQuota() { return this.hotelQuota; }
+
+    public void setHotelQuota(HotelQuota hotelQuota) { this.hotelQuota = hotelQuota; }
 }

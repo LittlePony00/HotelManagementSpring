@@ -13,6 +13,15 @@ public enum MaintenanceScheduleStatus {
     AS_NEEDED("As needed", null);
 
     private final String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Period getInterval() {
+        return interval;
+    }
+
     private final Period interval;
 
     MaintenanceScheduleStatus(String description, Period interval) {

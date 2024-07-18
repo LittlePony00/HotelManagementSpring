@@ -1,15 +1,16 @@
 package com.zaurtregulov.spring.dto;
 
+import com.zaurtregulov.spring.data.entity.enums.HotelRole;
 import com.zaurtregulov.spring.domain.dto.EmployeeDto;
 
 public class EmployeeDtoImpl implements EmployeeDto {
     private String name;
-    private String role;
+    private HotelRole role;
     private String schedule;
 
     protected EmployeeDtoImpl() {}
 
-    public EmployeeDtoImpl(String name, String role, String schedule) {
+    public EmployeeDtoImpl(String name, HotelRole role, String schedule) {
         this.name = name;
         this.role = role;
         this.schedule = schedule;
@@ -26,12 +27,12 @@ public class EmployeeDtoImpl implements EmployeeDto {
     }
 
     @Override
-    public String getRole() {
+    public HotelRole getRole() {
         return role;
     }
 
     @Override
-    public void setRole(String role) {
+    public void setRole(HotelRole role) {
         this.role = role;
     }
 

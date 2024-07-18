@@ -13,16 +13,18 @@ public class Room {
     private RoomType roomType;
     private int capacity;
     private double pricePerNight;
+    private boolean isPetsFriendly;
     private boolean availability;
-    private Set<Task> tasks = new HashSet<>();
     private MaintenanceSchedule maintenanceSchedule;
+    private Set<Task> tasks = new HashSet<>();
 
-    public Room(Integer roomNumber, RoomType roomType, int capacity, double pricePerNight, boolean availability) {
+    public Room(Integer roomNumber, RoomType roomType, int capacity, double pricePerNight, boolean availability, boolean isPetsFriendly) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.capacity = capacity;
         this.pricePerNight = pricePerNight;
         this.availability = availability;
+        this.isPetsFriendly = isPetsFriendly;
     }
 
     protected Room() {}
@@ -89,5 +91,14 @@ public class Room {
 
     public void setMaintenanceSchedule(MaintenanceSchedule maintenanceSchedule) {
         this.maintenanceSchedule = maintenanceSchedule;
+    }
+
+    @Column(name = "is_pets_friendly", nullable = false)
+    public boolean isPetsFriendly() {
+        return isPetsFriendly;
+    }
+
+    public void setPetsFriendly(boolean petsFriendly) {
+        isPetsFriendly = petsFriendly;
     }
 }

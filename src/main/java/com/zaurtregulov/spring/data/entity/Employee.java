@@ -1,5 +1,6 @@
 package com.zaurtregulov.spring.data.entity;
 
+import com.zaurtregulov.spring.data.entity.enums.HotelRole;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -8,19 +9,18 @@ import java.util.List;
 public class Employee extends IdEntity {
 
     private String name;
-    private String role;
+    private HotelRole hotelRole;
     private String schedule;
+    private List<Task> tasks;
 
-    public Employee(String name, String role, String schedule, List<Task> tasks) {
+    public Employee(String name, String schedule, List<Task> tasks, HotelRole hotelRole) {
         this.name = name;
-        this.role = role;
         this.schedule = schedule;
         this.tasks = tasks;
+        this.hotelRole = hotelRole;
     }
 
     protected Employee() {}
-
-    private List<Task> tasks;
 
     @Column(name = "name", nullable = false)
     public String getName() {
@@ -31,15 +31,6 @@ public class Employee extends IdEntity {
         this.name = name;
     }
 
-    @Column(name = "role", nullable = false)
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     @Column(name = "schedule", nullable = false)
     public String getSchedule() {
         return schedule;
@@ -47,6 +38,15 @@ public class Employee extends IdEntity {
 
     public void setSchedule(String schedule) {
         this.schedule = schedule;
+    }
+
+    @Column(name = "hotel_role", nullable = false)
+    public HotelRole getHotelRole() {
+        return hotelRole;
+    }
+
+    public void setHotelRole(HotelRole hotelRole) {
+        this.hotelRole = hotelRole;
     }
 
     @OneToMany(mappedBy = "employee", targetEntity = Task.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)

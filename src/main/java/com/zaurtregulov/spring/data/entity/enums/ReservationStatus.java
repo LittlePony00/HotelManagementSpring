@@ -6,6 +6,7 @@ public enum ReservationStatus {
     CHECKED_IN("Checked_in", 2),
     CHECKED_OUT("Checked_out", 3),
     CANCELLED("Cancelled", 4),
+    FREE("Free", 5),
     ;
 
     private String statusName;

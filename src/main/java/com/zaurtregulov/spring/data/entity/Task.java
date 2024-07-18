@@ -1,8 +1,13 @@
 package com.zaurtregulov.spring.data.entity;
 
+import com.zaurtregulov.spring.data.entity.enums.HotelBenefit;
+import com.zaurtregulov.spring.data.entity.enums.HotelStaffTask;
 import com.zaurtregulov.spring.data.entity.enums.TaskStatus;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -11,16 +16,17 @@ public class Task extends IdEntity {
 
     private String description;
     private Employee employee;
-    private Date dueDate;
+    private LocalDateTime dueDate;
     private TaskStatus status;
+    private HotelStaffTask hotelStaffTask;
     private Set<Room> rooms;
 
-    public Task(String description, Employee employee, Date dueDate, TaskStatus status, Set<Room> rooms) {
+    public Task(String description, Employee employee, LocalDateTime dueDate, TaskStatus status, HotelStaffTask hotelStaffTask) {
         this.description = description;
         this.employee = employee;
         this.dueDate = dueDate;
         this.status = status;
-        this.rooms = rooms;
+        this.hotelStaffTask = hotelStaffTask;
     }
 
     protected Task() {}
@@ -35,11 +41,11 @@ public class Task extends IdEntity {
     }
 
     @Column(name = "due_date", nullable = false)
-    public Date getDueDate() {
+    public LocalDateTime getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -50,6 +56,15 @@ public class Task extends IdEntity {
 
     public void setStatus(TaskStatus status) {
         this.status = status;
+    }
+
+    @Column(name = "hotel_staff_task")
+    public HotelStaffTask getHotelStaffTask() {
+        return hotelStaffTask;
+    }
+
+    public void setHotelStaffTask(HotelStaffTask hotelStaffTask) {
+        this.hotelStaffTask = hotelStaffTask;
     }
 
     @ManyToOne

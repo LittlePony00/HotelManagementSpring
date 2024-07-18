@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GuestRepository {
 
+    public Guest findById(Integer id);
+
+    void save(Guest guest);
 }

@@ -44,7 +44,7 @@ public class AppConfig {
 
     @Bean
     public EmployeeService employeeService() {
-        return new EmployeeServiceImpl();
+        return new EmployeeServiceImpl(employeeRepository(), modelMapper());
     }
 
     @Bean
@@ -54,12 +54,12 @@ public class AppConfig {
 
     @Bean
     public MaintenanceScheduleService maintenanceScheduleService() {
-        return new MaintenanceScheduleIServiceImpl();
+        return new MaintenanceScheduleIServiceImpl(maintenanceScheduleRepository(), employeeRepository(), modelMapper(), roomRepository());
     }
 
     @Bean
     public ReservationService reservationService() {
-        return new ReservationServiceImpl();
+        return new ReservationServiceImpl(reservationRepository(), roomRepository(), modelMapper(), guestRepository());
     }
 
     @Bean
@@ -69,6 +69,6 @@ public class AppConfig {
 
     @Bean
     public TaskService taskService() {
-        return new TaskServiceImpl();
+        return new TaskServiceImpl(taskRepository(), employeeRepository(),modelMapper());
     }
 }
