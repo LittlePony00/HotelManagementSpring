@@ -1,39 +1,61 @@
 package com.zaurtregulov.spring.domain.dto;
 
-import com.zaurtregulov.spring.data.entity.Guest;
-import com.zaurtregulov.spring.data.entity.MaintenanceSchedule;
-import com.zaurtregulov.spring.data.entity.Room;
 import com.zaurtregulov.spring.data.entity.enums.RoomType;
-import com.zaurtregulov.spring.dto.MaintenanceScheduleDtoImpl;
 
-public interface RoomDto {
+public class RoomDto {
 
-    Room getRoom();
+    private Integer roomNumber;
+    private RoomType roomType;
+    private int capacity;
+    private double pricePerNight;
+    private boolean isPetsFriendly;
+    private boolean availability;
 
-    void setRoom(Room room);
+    public Integer getRoomNumber() {
+        return roomNumber;
+    }
 
-    Guest getGuest();
+    public void setRoomNumber(Integer roomNumber) {
+        this.roomNumber = roomNumber;
+    }
 
-    void setGuest(Guest guest);
+    public RoomType getRoomType() {
+        return roomType;
+    }
 
-    Integer getRoomNumber();
-    void setRoomNumber(Integer roomNumber);
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
+    }
 
-    MaintenanceScheduleDtoImpl getMaintenanceSchedule();
-    void setMaintenance(MaintenanceScheduleDtoImpl maintenance);
+    public int getCapacity() {
+        return capacity;
+    }
 
-    Boolean getIsPetsFriendly();
-    void setIsPetsFriendly(Boolean isPetsFriendly);
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
 
-    RoomType getRoomType();
-    void setRoomType(RoomType roomType);
+    public double getPricePerNight() {
+        return pricePerNight;
+    }
 
-    int getCapacity();
-    void setCapacity(int capacity);
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
+    }
 
-    double getPricePerNight();
-    void setPricePerNight(double pricePerNight);
+    public boolean isPetsFriendly() {
+        return isPetsFriendly;
+    }
 
-    boolean isAvailability();
-    void setAvailability(boolean availability);
+    public void setPetsFriendly(boolean petsFriendly) {
+        isPetsFriendly = petsFriendly;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
 }

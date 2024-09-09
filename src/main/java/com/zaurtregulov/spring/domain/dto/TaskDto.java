@@ -1,28 +1,71 @@
 package com.zaurtregulov.spring.domain.dto;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
+import com.zaurtregulov.spring.data.entity.enums.RoomType;
 
-import com.zaurtregulov.spring.data.entity.Employee;
-import com.zaurtregulov.spring.data.entity.enums.HotelStaffTask;
-import com.zaurtregulov.spring.data.entity.enums.TaskStatus;
-import com.zaurtregulov.spring.dto.EmployeeDtoImpl;
+public class TaskDto {
 
-public interface TaskDto {
+    private String employeeName;
 
-    EmployeeDtoImpl getEmployee();
-    void setEmployee(EmployeeDtoImpl employee);
+    public String getEmployeeName() {
+        return employeeName;
+    }
 
-    HotelStaffTask getHotelStaffTasks();
-    void setHotelStaffTasks(HotelStaffTask hotelStaffTasks);
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
 
-    String getDescription();
-    void setDescription(String description);
+    public Integer getRoomNumber() {
+        return roomNumber;
+    }
 
-    LocalDateTime getDueDate();
-    void setDueDate(LocalDateTime dueDate);
+    public void setRoomNumber(Integer roomNumber) {
+        this.roomNumber = roomNumber;
+    }
 
-    TaskStatus getStatus();
-    void setStatus(TaskStatus status);
+    public RoomType getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public double getPricePerNight() {
+        return pricePerNight;
+    }
+
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
+    }
+
+    public boolean isPetsFriendly() {
+        return isPetsFriendly;
+    }
+
+    public void setPetsFriendly(boolean petsFriendly) {
+        isPetsFriendly = petsFriendly;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
+
+    private Integer roomNumber;
+    private RoomType roomType;
+    private int capacity;
+    private double pricePerNight;
+    private boolean isPetsFriendly;
+    private boolean availability;
 }

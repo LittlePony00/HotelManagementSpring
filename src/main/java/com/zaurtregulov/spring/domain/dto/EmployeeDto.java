@@ -2,13 +2,34 @@ package com.zaurtregulov.spring.domain.dto;
 
 import com.zaurtregulov.spring.data.entity.enums.HotelRole;
 
-public interface EmployeeDto {
-    String getName();
-    void setName(String name);
+public class EmployeeDto {
 
-    HotelRole getRole();
-    void setRole(HotelRole role);
+    private String employeeName;
+    private HotelRole hotelRole;
 
-    String getSchedule();
-    void setSchedule(String schedule);
+    private String schedule;
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public HotelRole getHotelRole() {
+        return hotelRole;
+    }
+
+    public void setHotelRole(HotelRole hotelRole) {
+        this.hotelRole = hotelRole;
+    }
+
+    public String getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
+    }
 }

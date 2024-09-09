@@ -1,28 +1,75 @@
 package com.zaurtregulov.spring.domain.dto;
 
+import com.zaurtregulov.spring.data.entity.enums.HotelRole;
 import com.zaurtregulov.spring.data.entity.enums.MaintenanceScheduleStatus;
 import com.zaurtregulov.spring.data.entity.enums.MaintenanceType;
-import com.zaurtregulov.spring.dto.EmployeeDtoImpl;
-import com.zaurtregulov.spring.dto.RoomDtoImpl;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
-public interface MaintenanceScheduleDto {
+public class MaintenanceScheduleDto {
 
-    EmployeeDtoImpl getEmployee();
-    void setEmployee(EmployeeDtoImpl employee);
+    private Integer roomNumber;
+    private Long employee_id;
+    private LocalDateTime maintenanceDate;
+    private MaintenanceType maintenanceType;
+    private MaintenanceScheduleStatus status;
 
-    RoomDtoImpl getRoom();
+    public Long getEmployee_id() {
+        return employee_id;
+    }
 
-    void setRoom(RoomDtoImpl roomNumber);
+    public void setEmployee_id(Long employee_id) {
+        this.employee_id = employee_id;
+    }
 
-    LocalDateTime getMaintenanceDate();
-    void setMaintenanceDate(LocalDateTime maintenanceDate);
+    public Integer getRoomNumber() {
+        return roomNumber;
+    }
 
-    MaintenanceType getMaintenanceType();
-    void setMaintenanceType(MaintenanceType maintenanceType);
+    public void setRoomNumber(Integer roomNumber) {
+        this.roomNumber = roomNumber;
+    }
 
-    MaintenanceScheduleStatus getStatus();
-    void setStatus(MaintenanceScheduleStatus status);
+    public LocalDateTime getMaintenanceDate() {
+        return maintenanceDate;
+    }
+
+    public void setMaintenanceDate(LocalDateTime maintenanceDate) {
+        this.maintenanceDate = maintenanceDate;
+    }
+
+    public MaintenanceType getMaintenanceType() {
+        return maintenanceType;
+    }
+
+    public void setMaintenanceType(MaintenanceType maintenanceType) {
+        this.maintenanceType = maintenanceType;
+    }
+
+    public MaintenanceScheduleStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(MaintenanceScheduleStatus status) {
+        this.status = status;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public HotelRole getHotelRole() {
+        return hotelRole;
+    }
+
+    public void setHotelRole(HotelRole hotelRole) {
+        this.hotelRole = hotelRole;
+    }
+
+    private String name;
+    private HotelRole hotelRole;
 }

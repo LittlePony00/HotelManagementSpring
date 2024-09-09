@@ -1,8 +1,8 @@
 package com.zaurtregulov.spring.cfg;
-import com.zaurtregulov.spring.data.repository.*;
-import com.zaurtregulov.spring.domain.repository.*;
-import com.zaurtregulov.spring.domain.service.*;
-import com.zaurtregulov.spring.service.*;
+import com.zaurtregulov.spring.core.service.contracts.*;
+import com.zaurtregulov.spring.core.service.impl.*;
+import com.zaurtregulov.spring.domain.repository.contracts.*;
+import com.zaurtregulov.spring.domain.repository.impl.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,7 +44,7 @@ public class AppConfig {
 
     @Bean
     public EmployeeService employeeService() {
-        return new EmployeeServiceImpl(employeeRepository(), modelMapper());
+        return new EmployeeServiceImpl();
     }
 
     @Bean
@@ -54,12 +54,12 @@ public class AppConfig {
 
     @Bean
     public MaintenanceScheduleService maintenanceScheduleService() {
-        return new MaintenanceScheduleIServiceImpl(maintenanceScheduleRepository(), employeeRepository(), modelMapper(), roomRepository());
+        return new MaintenanceScheduleIServiceImpl();
     }
 
     @Bean
     public ReservationService reservationService() {
-        return new ReservationServiceImpl(reservationRepository(), roomRepository(), modelMapper(), guestRepository());
+        return new ReservationServiceImpl();
     }
 
     @Bean
@@ -69,6 +69,6 @@ public class AppConfig {
 
     @Bean
     public TaskService taskService() {
-        return new TaskServiceImpl(taskRepository(), employeeRepository(),modelMapper());
+        return new TaskServiceImpl();
     }
 }

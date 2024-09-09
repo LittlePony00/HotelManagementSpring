@@ -8,9 +8,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "maintenance_schedule")
-public class MaintenanceSchedule {
+public class MaintenanceSchedule extends IdEntity {
 
-    private Integer roomNumber;
     private Room room;
     private LocalDateTime maintenanceDate;
     private MaintenanceType maintenanceType;
@@ -19,13 +18,11 @@ public class MaintenanceSchedule {
 
     public MaintenanceSchedule(
             Employee employee,
-            Integer roomNumber,
             Room room,
             LocalDateTime maintenanceDate,
             MaintenanceType maintenanceType,
             MaintenanceScheduleStatus status
     ) {
-        this.roomNumber = roomNumber;
         this.employee = employee;
         this.room = room;
         this.maintenanceDate = maintenanceDate;
@@ -35,25 +32,14 @@ public class MaintenanceSchedule {
 
     protected MaintenanceSchedule() {}
 
-    @Id
-    @Column(name = "room_number")
-    public Integer getRoomNumber() {
-        return roomNumber;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "employee", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id", nullable = false)
     public Employee getEmployee() { return employee; }
 
     public void setEmployee(Employee employee) { this.employee = employee; }
 
-    public void setRoomNumber(Integer roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "room_number")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_number", nullable = false)
     public Room getRoom() {
         return room;
     }
